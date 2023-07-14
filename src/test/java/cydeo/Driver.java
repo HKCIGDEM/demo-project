@@ -13,7 +13,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+
 import java.net.URL;
+import java.time.Duration;
 
 public class Driver {
     static String browser;
@@ -35,11 +37,12 @@ public class Driver {
                 case "remote-chrome":
                     try {
                         // assign your grid server address
-                        String gridAddress = "34.201.52.112";
+                        String gridAddress = "3.95.235.142";
                         URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setBrowserName("chrome");
                         driver = new RemoteWebDriver(url, desiredCapabilities);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -56,10 +59,31 @@ public class Driver {
                         e.printStackTrace();
                     }
                     break;
+                //case "chrome":
+                    //WebDriverManager.chromedriver().setup();
+                    //driver = new ChromeDriver();
+                    //break;
+
                 case "chrome":
+/*
+                   //WebDriverManager.chromedriver().setup();
+                   //driver = new ChromeDriver();
+                    String username = System.getProperty("user.name");
+                    String userProfilePath = "/Users/" + username + "/Library/Application Support/Google/Chrome/Default";
+
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--disable-extensions");
+                    chromeOptions.addArguments("--disable-popup-blocking");
+                    chromeOptions.addArguments("--disable-infobars");
+                    chromeOptions.addArguments("--user-data-dir=" + userProfilePath);
+                    driver = new ChromeDriver(chromeOptions);
+ */
+
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
                     break;
+
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
